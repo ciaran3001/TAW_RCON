@@ -1,0 +1,5 @@
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\bin\Debug\TestingRCONCMD.exe.config
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\bin\Debug\TestingRCONCMD.exe
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\bin\Debug\TestingRCONCMD.pdb
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\obj\Debug\TestingRCONCMD.exe
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\obj\Debug\TestingRCONCMD.pdb

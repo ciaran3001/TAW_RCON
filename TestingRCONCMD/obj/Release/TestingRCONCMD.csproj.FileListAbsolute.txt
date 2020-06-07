@@ -1,0 +1,6 @@
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\bin\Release\TestingRCONCMD.exe.config
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\bin\Release\TestingRCONCMD.exe
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\bin\Release\TestingRCONCMD.pdb
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\obj\Release\TestingRCONCMD.exe
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\obj\Release\TestingRCONCMD.pdb
+C:\Users\Ciaran\Desktop\Desktop\Projects\TestingRCONCMD\TestingRCONCMD\obj\Release\TestingRCONCMD.csprojResolveAssemblyReference.cache
