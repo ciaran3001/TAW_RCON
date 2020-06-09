@@ -20,55 +20,107 @@
                     <h3>Current available RCON Commands:</h3>
                 </div>
             </div>
+            <hr />
 
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Show Found Rcon Commands
-            </button>
-            <hr/>
-            <div class="collapse" id="collapseExample">
-                <div class="col-sm-12" >
-                    @foreach (var item in Model.FoundCommands)
-                    {
-                        <div class="form-group">
 
+            <div class="container">
+                <!-- Filter Input-->
+                <label>Filter Command List:</label>
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <br>
+
+                <div class="col-sm-9">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Command</th>
+                                <th>Paramter 1</th>
+                                <th>Paramter 2</th>
+                                <th>Paramter 3</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            @foreach (var item in Model.FoundCommands)
+                            {
                                 <form>
-                                    <div class="row">
-                                        <div class="col-sm-3">
+                                    <tr>
+                                        <td>
                                             <button type="submit" class="btn btn-primary">@item.m_name</button>
-                                        </div>
-                                            <!-- <label for="textparam">@item.m_name</label>-->
-                                            
-                                            
+                                        </td>
+                                        @foreach (var param in item.m_parameters)
+                                        {
 
-                                    @foreach (var param in item.m_parameters)
-                                    {
-                                        <div class="col-sm-3">
-                                            @if (param.Type == "int")
+                                            if (param.Type == "int")
                                             {
-                                                <label for="textparam">@param.Hint</label>
-                                                <input type="number" id="intparam" name="@param.Hint">
+                                                <td>
+                                                    <label for="textparam">@param.Hint</label><br />
+                                                    <input type="number" id="intparam" name="@param.Hint">
+                                                </td>
                                             }
                                             else if (param.Type == "string")
                                             {
-                                                <label for="textparam">@param.Hint</label>
-                                                <input type="text" class="form-control" id="textparam">
+                                                <td>
+                                                    <label for="textparam">@param.Hint</label><br />
+                                                    <input type="text" class="form-control" id="textparam">
+                                                </td>
                                             }
                                             else if (param.Type == "bool")
                                             {
-                                                <label for="textparam">@param.Hint</label>
-                                                <input type="checkbox" disabled data-toggle="toggle">
+                                                <td>
+                                                    <label for="textparam">@param.Hint</label><br />
+                                                    <input type="checkbox" data-toggle="toggle">
+                                                </td>
                                             }
-                                        </div>
-                                    }
-                            </div>
-                                </form>
-                            <br/>
-                            <hr/>
 
+                                        }
+                                    </tr>
+                                </form>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="overflow-auto">
+                        <div class="alert alert-success" role="alert">
+                            Response Log:
+                            <hr />
                         </div>
-                    }
+                        <div class="alert alert-success" role="alert">
+                            <div id="response">
+                                Example response: Samke killed 20393857 shermans.
+                                <hr />
+                            </div>
+                            <div id="response">
+                                Example response: 24/100 players online.
+                                <hr />
+                            </div>
+                            <div id="response">
+                                Example response: Banlist. {john doe, lisa simpson, andre the giant}
+                                <hr />
+                            </div>
+                            <div id="response">
+                                Example response: Broadcast set to "Welcome to TAW"
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+
+    <script>
+                //Filter table
+                $(document).ready(function () {
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#myTable tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
+            </script>
         </div>
     </div>
 
