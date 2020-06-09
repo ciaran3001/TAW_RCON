@@ -1,0 +1,57 @@
+﻿@model RCON_HLL_MVC.Models.RconCommandsModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2>Hell Let Loose RCON</h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <p><b>Server: </b>176.57.168.232</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>Current available RCON Commands:</h3>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Show Found Rcon Commands
+            </button>
+            <div class="collapse" id="collapseExample">
+                <div class="col-sm-6" >
+                    @foreach (var item in Model.FoundCommands)
+                    {
+                        <div class="alert alert-success" role="alert">
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <b>Command: ( @item.m_parameters.Count Parameters)</b>
+                                    <li>@item.m_name </li>
+                                </div>
+
+                                @foreach (var param in item.m_parameters)
+                                {
+                                    <div class="col-sm-4">
+                                        <li>Getter: @param.GetterToUse</li>
+                                        <li>Hint: @param.Hint</li>
+                                        <li>Data Type: @param.Type</li>
+                                        <li>Quoted: @param.Quoted</li>
+                                        <li>Optional: @param.Optional</li>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
