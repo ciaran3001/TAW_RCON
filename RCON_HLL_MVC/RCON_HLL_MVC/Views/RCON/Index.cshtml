@@ -24,30 +24,47 @@
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                 Show Found Rcon Commands
             </button>
+            <hr/>
             <div class="collapse" id="collapseExample">
-                <div class="col-sm-6" >
+                <div class="col-sm-12" >
                     @foreach (var item in Model.FoundCommands)
                     {
-                        <div class="alert alert-success" role="alert">
+                        <div class="form-group">
 
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <b>Command: ( @item.m_parameters.Count Parameters)</b>
-                                    <li>@item.m_name </li>
-                                </div>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <button type="submit" class="btn btn-primary">@item.m_name</button>
+                                        </div>
+                                            <!-- <label for="textparam">@item.m_name</label>-->
+                                            
+                                            
 
-                                @foreach (var param in item.m_parameters)
-                                {
-                                    <div class="col-sm-4">
-                                        <li>Getter: @param.GetterToUse</li>
-                                        <li>Hint: @param.Hint</li>
-                                        <li>Data Type: @param.Type</li>
-                                        <li>Quoted: @param.Quoted</li>
-                                        <li>Optional: @param.Optional</li>
-                                    </div>
-                                }
-
+                                    @foreach (var param in item.m_parameters)
+                                    {
+                                        <div class="col-sm-3">
+                                            @if (param.Type == "int")
+                                            {
+                                                <label for="textparam">@param.Hint</label>
+                                                <input type="number" id="intparam" name="@param.Hint">
+                                            }
+                                            else if (param.Type == "string")
+                                            {
+                                                <label for="textparam">@param.Hint</label>
+                                                <input type="text" class="form-control" id="textparam">
+                                            }
+                                            else if (param.Type == "bool")
+                                            {
+                                                <label for="textparam">@param.Hint</label>
+                                                <input type="checkbox" disabled data-toggle="toggle">
+                                            }
+                                        </div>
+                                    }
                             </div>
+                                </form>
+                            <br/>
+                            <hr/>
+
                         </div>
                     }
                 </div>
