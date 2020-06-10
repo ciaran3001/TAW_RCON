@@ -29,7 +29,7 @@
                 <input class="form-control" id="myInput" type="text" placeholder="Search..">
                 <br>
 
-                <div class="col-sm-9">
+                <div class="col-sm-7">
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -42,10 +42,10 @@
                         <tbody id="myTable">
                             @foreach (var item in Model.FoundCommands)
                             {
-                                <form>
+                                <form id=@item.m_name>
                                     <tr>
                                         <td>
-                                            <button type="submit" class="btn btn-primary">@item.m_name</button>
+                                            <button type="" onclick="TriggerCommand('@item.m_name')" class="btn btn-primary">@item.m_name</button>
                                         </td>
                                         @foreach (var param in item.m_parameters)
                                         {
@@ -53,22 +53,48 @@
                                             if (param.Type == "int")
                                             {
                                                 <td>
+                                                    bool required = @param.Optional;
+
                                                     <label for="textparam">@param.Hint</label><br />
-                                                    <input type="number" id="intparam" required=@param.!Optional name="@param.Hint">
+                                                    @if (@param.Optional)
+                                                    {
+                                                        <input type="number" id="intparam" name="@param.Hint">
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="number" id="intparam" required name="@param.Hint">
+                                                    }
+                                                    
                                                 </td>
                                             }
                                             else if (param.Type == "string")
                                             {
                                                 <td>
                                                     <label for="textparam">@param.Hint</label><br />
-                                                    <input type="text" required=@param.!Optional class="form-control" id="textparam">
+                                                    @if (@param.Optional)
+                                                    {
+                                                        <input type="text"  class="form-control" id="textparam">
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" required class="form-control" id="textparam">
+                                                    }
+                                                    
                                                 </td>
                                             }
                                             else if (param.Type == "bool")
                                             {
                                                 <td>
                                                     <label for="textparam">@param.Hint</label><br />
-                                                    <input type="checkbox" required=@param.!Optional data-toggle="toggle">
+                                                    @if (@param.Optional)
+                                                    {
+                                                        <input type="checkbox" data-toggle="toggle">
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" required data-toggle="toggle">
+                                                    }
+                                                    
                                                 </td>
                                             }
 
@@ -81,31 +107,18 @@
                     </table>
                 </div>
 
-                <div class="col-sm-3">
-                    <div class="overflow-auto">
-                        <div class="alert alert-success" role="alert">
-                            Response Log:
-                            <hr />
+                <div class="col-sm-5">
+                    <section class="terminal-container terminal-fixed-top">
+                        <header class="terminal">
+                            <span class="button red"></span>
+                            <span class="button yellow"></span>
+                            <span class="button green"></span>
+                        </header>
+
+                        <div class="terminal-home" id="outputWindow" style="overflow-y: scroll; height:400px;">
+                            <p class="console">* Listening for server responses</p>
                         </div>
-                        <div class="alert alert-success" role="alert">
-                            <div id="response">
-                                Example response: Samke killed 20393857 shermans.
-                                <hr />
-                            </div>
-                            <div id="response">
-                                Example response: 24/100 players online.
-                                <hr />
-                            </div>
-                            <div id="response">
-                                Example response: Banlist. {john doe, lisa simpson, andre the giant}
-                                <hr />
-                            </div>
-                            <div id="response">
-                                Example response: Broadcast set to "Welcome to TAW"
-                                <hr />
-                            </div>
-                        </div>
-                    </div>
+                    </section>
                 </div>
             </div>
 
@@ -124,8 +137,15 @@
 
 
             <script>
+
+                var DisplayResponse = function (response) {
+                    var OutputDiv = document.getElementById("outputWindow");
+                    OutputDiv.innerHTML += " <p id='response'>" +  JSON.stringify(response) + "</p>";
+
+                }
                 //Ajax callings:
                 var TestGetBans = function () {
+
                     var myHeaders = new Headers();
                     myHeaders.append("Cookie", "__RequestVerificationToken=O9Tsqe83uZ3pCQQgAw-7X81cxFK4IOBKaKcTFaulDgHKLtODTfojj3NsrKDqJlf_zIJA6YbEwcOTuHx8z8tdYNZzXgT8D1EjmmcZBjw7iII1");
 
@@ -135,13 +155,19 @@
                         redirect: 'follow'
                     };
 
+                    var _response;
                     fetch("http://localhost:61821/RCON/GetBans", requestOptions)
-                      .then(response => response.text())
-                      .then(result => console.log(result))
+                      .then(response => response.json())
+                      .then(result => _response = result)
+                      .then(() => DisplayResponse(_response))
                       .catch(error => console.log('error', error));
 
-                    console.log("Response: " + response);
+                    console.log("Response: " + _response);
                     return response;
+                }
+
+                var TriggerCommand = function(formid){
+                    console.log("triggering for: " + formid);
                 }
                 setInterval(TestGetBans, 5000);
 
