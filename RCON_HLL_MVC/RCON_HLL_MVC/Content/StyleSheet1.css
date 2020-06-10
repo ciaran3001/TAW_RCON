@@ -1,0 +1,5 @@
+﻿.jumbotron {
+  background-image: url("../img/header_display.jpg") !important;
+  background-size:cover;
+  color: white;
+}
