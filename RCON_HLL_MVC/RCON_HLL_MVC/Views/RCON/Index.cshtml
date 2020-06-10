@@ -54,21 +54,21 @@
                                             {
                                                 <td>
                                                     <label for="textparam">@param.Hint</label><br />
-                                                    <input type="number" id="intparam" name="@param.Hint">
+                                                    <input type="number" id="intparam" required=@param.!Optional name="@param.Hint">
                                                 </td>
                                             }
                                             else if (param.Type == "string")
                                             {
                                                 <td>
                                                     <label for="textparam">@param.Hint</label><br />
-                                                    <input type="text" class="form-control" id="textparam">
+                                                    <input type="text" required=@param.!Optional class="form-control" id="textparam">
                                                 </td>
                                             }
                                             else if (param.Type == "bool")
                                             {
                                                 <td>
                                                     <label for="textparam">@param.Hint</label><br />
-                                                    <input type="checkbox" data-toggle="toggle">
+                                                    <input type="checkbox" required=@param.!Optional data-toggle="toggle">
                                                 </td>
                                             }
 
