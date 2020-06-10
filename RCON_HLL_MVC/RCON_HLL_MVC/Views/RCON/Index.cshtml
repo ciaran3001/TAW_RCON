@@ -121,6 +121,31 @@
                     });
                 });
             </script>
+
+
+            <script>
+                //Ajax callings:
+                var TestGetBans = function () {
+                    var myHeaders = new Headers();
+                    myHeaders.append("Cookie", "__RequestVerificationToken=O9Tsqe83uZ3pCQQgAw-7X81cxFK4IOBKaKcTFaulDgHKLtODTfojj3NsrKDqJlf_zIJA6YbEwcOTuHx8z8tdYNZzXgT8D1EjmmcZBjw7iII1");
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        redirect: 'follow'
+                    };
+
+                    fetch("http://localhost:61821/RCON/GetBans", requestOptions)
+                      .then(response => response.text())
+                      .then(result => console.log(result))
+                      .catch(error => console.log('error', error));
+
+                    console.log("Response: " + response);
+                    return response;
+                }
+                setInterval(TestGetBans, 5000);
+
+            </script>
         </div>
     </div>
 
