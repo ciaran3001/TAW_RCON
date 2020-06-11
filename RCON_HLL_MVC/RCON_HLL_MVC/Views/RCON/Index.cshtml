@@ -42,10 +42,10 @@
                         <tbody id="myTable">
                             @foreach (var item in Model.FoundCommands)
                             {
-                                <form id=@item.m_name>
-                                    <tr>
+                                <form >
+                                    <tr id="@item.m_name">
                                         <td>
-                                            <button type="" onclick="TriggerCommand('@item.m_name')" class="btn btn-primary">@item.m_name</button>
+                                            <button type="button" onclick="TriggerCommand('@item.m_name')" class="btn btn-primary">@item.m_name</button>
                                         </td>
                                         @foreach (var param in item.m_parameters)
                                         {
@@ -73,11 +73,11 @@
                                                     <label for="textparam">@param.Hint</label><br />
                                                     @if (@param.Optional)
                                                     {
-                                                        <input type="text"  class="form-control" id="textparam">
+                                                        <input type="text"  name="@param.Hint" class="form-control" id="textparam">
                                                     }
                                                     else
                                                     {
-                                                        <input type="text" required class="form-control" id="textparam">
+                                                        <input type="text" name="@param.Hint" required class="form-control" id="textparam">
                                                     }
                                                     
                                                 </td>
@@ -88,11 +88,11 @@
                                                     <label for="textparam">@param.Hint</label><br />
                                                     @if (@param.Optional)
                                                     {
-                                                        <input type="checkbox" data-toggle="toggle">
+                                                        <input type="checkbox" name="@param.Hint" data-toggle="toggle">
                                                     }
                                                     else
                                                     {
-                                                        <input type="checkbox" required data-toggle="toggle">
+                                                        <input type="checkbox" name="@param.Hint"  required data-toggle="toggle">
                                                     }
                                                     
                                                 </td>
@@ -163,12 +163,60 @@
                       .catch(error => console.log('error', error));
 
                     console.log("Response: " + _response);
-                    return response;
                 }
 
-                var TriggerCommand = function(formid){
+                var TriggerCommand = function (formid) {
+                    var json = CreateCommandJSON(formid);
                     console.log("triggering for: " + formid);
+
+                    var myHeaders = new Headers();
+                    myHeaders.append("Cookie", "__RequestVerificationToken=zIJv1u6F-0kyGprYczVv4lDKcu37JH1ql1NuqwK2zJsxNaKd8rspMr8OYTyIcuj04drbSfKAJ3pZde9KipCu5BdobkBUChVRSEiMd2qTsew1");
+
+                    var formdata = new FormData();
+                    formdata.append("CommandJSON",json);
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: formdata,
+                        redirect: 'follow'
+                    };
+
+                    fetch("http://localhost:61821/RCON/SendCommand?=", requestOptions)
+                      .then(response => response.text())
+                      .then(result => alert(result))
+                      .catch(error => console.log('error', error));
                 }
+
+
+                var CreateCommandJSON = function (formid) {
+                    var obj = {};
+                    
+
+                    var form = document.getElementById(formid);
+
+                    inputs = form.getElementsByTagName("input");
+
+                    obj.command = formid;
+                    obj.requestor = "placeholder";
+                    obj.parameters = [];
+
+                    for (index = 0; index < inputs.length; ++index) {
+                        // deal with inputs[index] element.
+                        var _tmp = {};
+                        _tmp.Hint = inputs[index].name;
+                        _tmp.Value = inputs[index].value.toString();
+                        _tmp.Type = inputs[index].type.toString();
+
+                        console.log("Found: " + inputs[index].name + ": " + inputs[index].value);
+                        obj.parameters[index] = _tmp;
+                    }
+
+                    var json = JSON.stringify(obj);
+                    console.log(json);
+                    return json;
+                }
+
                 setInterval(TestGetBans, 5000);
 
             </script>

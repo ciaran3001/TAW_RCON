@@ -49,19 +49,19 @@ namespace RCON_HLL_MVC
             //   return Json(ccService.Read().ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
         }
 
-     //   [HttpPost]
+      [HttpPost]
         public ActionResult SendCommand(string CommandJSON)
         {
             InputHelper helper = new InputHelper();
             RconCommand rconCommand;
             List<RconCommandParameter> populatedParams;
+            string response = " ";
 
-            string json = "{\"command\" :\"Broadcast\",\"requestor\" : \"username\",\"parameters\" : [{\"Hint\" : \"Message (leave empty to clear the last broadcast)\",\"Value\" : \"John Doe\", \"Type\" : \"string\"}]}";
-            if (helper.ConvertJSONToCommand(json, out rconCommand, out populatedParams))
+            if (helper.ConvertJSONToCommand(CommandJSON, out rconCommand, out populatedParams))
             {
-                rconCommand.StartExecuting(populatedParams, RCONSetup.RCONSession);
+                rconCommand.StartExecuting(populatedParams, RCONSetup.RCONSession, out response);
             }
-            return Json(new { value = "unknown" },JsonRequestBehavior.AllowGet);
+            return Json(response, JsonRequestBehavior.AllowGet);
         }
         #region Unused ActionResults
         /*  // GET: RCON/Details/5

@@ -26,7 +26,7 @@ namespace RCON_HLL_MVC.Models
         }
         
         //Populate paramters into Command, and execute. 
-        public void StartExecuting(List<RconCommandParameter> parameters, ServerSession serverSession)
+        public void StartExecuting(List<RconCommandParameter> parameters, ServerSession serverSession, out string returnMSg)
         {
             List<string> stringList = new List<string>();
             if (m_parameters.Count > 0)
@@ -58,11 +58,14 @@ namespace RCON_HLL_MVC.Models
             if (!serverSession.SendMessage(string.Format(m_messageTemplate, (object[])stringList.ToArray()), true))
             {
                 Console.WriteLine("Failed,");
+                returnMSg = " ";
+
                 return;
             }
 
             string receivedMessage = "";
             serverSession.ReceiveMessage(out receivedMessage, true, true);
+            returnMSg = receivedMessage;
         }
         //Add quote marks to string. 
         public static string QuoteString(string s)
