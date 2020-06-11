@@ -20,38 +20,158 @@
                     <h3>Current available RCON Commands:</h3>
                 </div>
             </div>
+            <hr />
 
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                Show Found Rcon Commands
-            </button>
-            <div class="collapse" id="collapseExample">
-                <div class="col-sm-12" >
-                    @foreach (var item in Model.FoundCommands)
-                    {
-                        <div class="alert alert-success" role="alert">
 
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <b>Command: ( @item.m_parameters.Count Parameters)</b>
-                                    <li>@item.m_name </li>
-                                </div>
+            <div class="container">
+                <!-- Filter Input-->
+                <label>Filter Command List:</label>
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <br>
 
-                                @foreach (var param in item.m_parameters)
-                                {
-                                    <div class="col-sm-4">
-                                        <li>Getter: @param.GetterToUse</li>
-                                        <li>Hint: @param.Hint</li>
-                                        <li>Data Type: @param.Type</li>
-                                        <li>Quoted: @param.Quoted</li>
-                                        <li>Optional: @param.Optional</li>
-                                    </div>
-                                }
+                <div class="col-sm-7">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Command</th>
+                                <th>Paramter 1</th>
+                                <th>Paramter 2</th>
+                                <th>Paramter 3</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            @foreach (var item in Model.FoundCommands)
+                            {
+                                <form id=@item.m_name>
+                                    <tr>
+                                        <td>
+                                            <button type="" onclick="TriggerCommand('@item.m_name')" class="btn btn-primary">@item.m_name</button>
+                                        </td>
+                                        @foreach (var param in item.m_parameters)
+                                        {
 
-                            </div>
+                                            if (param.Type == "int")
+                                            {
+                                                <td>
+                                                    bool required = @param.Optional;
+
+                                                    <label for="textparam">@param.Hint</label><br />
+                                                    @if (@param.Optional)
+                                                    {
+                                                        <input type="number" id="intparam" name="@param.Hint">
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="number" id="intparam" required name="@param.Hint">
+                                                    }
+                                                    
+                                                </td>
+                                            }
+                                            else if (param.Type == "string")
+                                            {
+                                                <td>
+                                                    <label for="textparam">@param.Hint</label><br />
+                                                    @if (@param.Optional)
+                                                    {
+                                                        <input type="text"  class="form-control" id="textparam">
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" required class="form-control" id="textparam">
+                                                    }
+                                                    
+                                                </td>
+                                            }
+                                            else if (param.Type == "bool")
+                                            {
+                                                <td>
+                                                    <label for="textparam">@param.Hint</label><br />
+                                                    @if (@param.Optional)
+                                                    {
+                                                        <input type="checkbox" data-toggle="toggle">
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="checkbox" required data-toggle="toggle">
+                                                    }
+                                                    
+                                                </td>
+                                            }
+
+                                        }
+                                    </tr>
+                                </form>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-sm-5">
+                    <section class="terminal-container terminal-fixed-top">
+                        <header class="terminal">
+                            <span class="button red"></span>
+                            <span class="button yellow"></span>
+                            <span class="button green"></span>
+                        </header>
+
+                        <div class="terminal-home" id="outputWindow" style="overflow-y: scroll; height:400px;">
+                            <p class="console">* Listening for server responses</p>
                         </div>
-                    }
+                    </section>
                 </div>
             </div>
+
+
+    <script>
+                //Filter table
+                $(document).ready(function () {
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#myTable tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
+            </script>
+
+
+            <script>
+
+                var DisplayResponse = function (response) {
+                    var OutputDiv = document.getElementById("outputWindow");
+                    OutputDiv.innerHTML += " <p id='response'>" +  JSON.stringify(response) + "</p>";
+
+                }
+                //Ajax callings:
+                var TestGetBans = function () {
+
+                    var myHeaders = new Headers();
+                    myHeaders.append("Cookie", "__RequestVerificationToken=O9Tsqe83uZ3pCQQgAw-7X81cxFK4IOBKaKcTFaulDgHKLtODTfojj3NsrKDqJlf_zIJA6YbEwcOTuHx8z8tdYNZzXgT8D1EjmmcZBjw7iII1");
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        redirect: 'follow'
+                    };
+
+                    var _response;
+                    fetch("http://localhost:61821/RCON/GetBans", requestOptions)
+                      .then(response => response.json())
+                      .then(result => _response = result)
+                      .then(() => DisplayResponse(_response))
+                      .catch(error => console.log('error', error));
+
+                    console.log("Response: " + _response);
+                    return response;
+                }
+
+                var TriggerCommand = function(formid){
+                    console.log("triggering for: " + formid);
+                }
+                setInterval(TestGetBans, 5000);
+
+            </script>
         </div>
     </div>
 

@@ -1,6 +1,9 @@
-﻿using RCON_HLL_MVC.Models;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using RCON_HLL_MVC.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace RCON_HLL_MVC.Helpers
 {
@@ -85,6 +88,86 @@ namespace RCON_HLL_MVC.Helpers
             Console.Write("Not in Getter Library.");
             FoundRconCommand = null;
             return false;
+        }
+
+        public bool ConvertJSONToCommand(string json, out RconCommand FoundCommand, out List<RconCommandParameter> Params)
+        {
+            JObject _CommandAsJson = JObject.Parse(json);
+            JToken _CommandNameNode = _CommandAsJson["command"];
+            string _CommandName = _CommandAsJson["command"].ToString();
+            JToken ParamsAsJson = _CommandAsJson["parameters"];
+
+
+            var ParamterResults = AllChildren(JObject.Parse(json))
+           .First(c => c.Type == JTokenType.Array && c.Path.Contains("parameters"))
+           .Children<JObject>();
+
+            List<JSONParameter> Parameters = new List<JSONParameter>();
+
+            /*Desired JSON Format
+             * {
+                "command" :"Kick",
+                "paramters" : [
+                    "param1","param2"
+                ]
+                ,"requestor" : "username"
+            }
+             */
+            List<JProperty> dumpProperties = new List<JProperty>();
+            foreach (JObject result in ParamterResults)
+            {
+                JSONParameter _tmp = new JSONParameter();
+                
+                foreach (JProperty property in result.Properties())
+                {                 
+                    // do something with the property belonging to result
+                    if(property.Name == "Hint")
+                    {
+                        _tmp.Hint = property.Value.ToString();
+                    }else if (property.Name == "Value")
+                    {
+                        _tmp.Value = property.Value.ToString();
+                    }
+                    else if (property.Name == "Type")
+                    {
+                        _tmp.Type = property.Value.ToString();
+                    }
+
+                    dumpProperties.Add(property);
+                }
+                Parameters.Add(_tmp);
+            }
+
+            foreach (var cmd in RconStaticLibrary.AvailableCommands)
+            {
+                if(cmd.m_name == _CommandName)
+                {
+                    FoundCommand = cmd;
+                    if(cmd.TryPopulateParamters(Parameters, out Params))
+                    {
+                        return true;
+                    }
+                }
+            }
+            //No Command Found
+            FoundCommand = null;
+            Params = null;
+            return false;
+
+
+
+        }
+
+        private static IEnumerable<JToken> AllChildren(JToken json)
+        {
+            foreach (var c in json.Children())
+            {
+                yield return c;
+                foreach (var cc in AllChildren(c))
+                {
+                    yield return cc;
+                }
+            }
         }
     }
 }

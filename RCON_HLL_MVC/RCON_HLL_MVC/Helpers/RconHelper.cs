@@ -48,6 +48,7 @@ namespace RCON_HLL_MVC.Helpers
         /// </summary>
         public static void GetAndProcessInput()
         {
+           /*
             Console.WriteLine("Please input a command:");
             string input = Console.ReadLine();
             List<string> parameters;
@@ -96,6 +97,7 @@ namespace RCON_HLL_MVC.Helpers
                 }
             }
             GetAndProcessInput();
+            */
         }
     }
 }

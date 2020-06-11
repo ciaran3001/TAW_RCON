@@ -73,7 +73,7 @@ namespace RCON_HLL_MVC.Models
             return str + "\"";
         }
 
-        public bool TryPopulateParamters(List<string> ParamsAsString, out List<RconCommandParameter> PopulatedParams)
+        public bool TryPopulateParamters(List<JSONParameter> JsonParams, out List<RconCommandParameter> PopulatedParams)
         {
             try
             {
@@ -83,12 +83,22 @@ namespace RCON_HLL_MVC.Models
 
                 Console.WriteLine("Paramters found for " + m_name + ":  \n =============================================");
                 var i = 0;
+                var ParamsPopulated = 0;
+
                 foreach(var _par in m_parameters)
                 {
                     Console.WriteLine(_par.Hint + ".  Optional: " + _par.Optional + ". Type: " + _par.Type + ". Quoted: " + _par.Quoted);
-                    _par.value = ParamsAsString[i];
+ 
                     i++;
 
+                    foreach(var jpar in JsonParams)
+                    {
+                        if (jpar.Hint == _par.Hint)
+                        {
+                            _par.value = jpar.Value;
+                            ParamsPopulated++;
+                        }
+                    }
                     _tmp.Add(_par);
 
                 }

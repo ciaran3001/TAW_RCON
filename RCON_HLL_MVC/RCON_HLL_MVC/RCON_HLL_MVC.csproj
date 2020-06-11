@@ -214,6 +214,7 @@
     </Compile>
     <Compile Include="Helpers\InputHelper.cs" />
     <Compile Include="Helpers\RconHelper.cs" />
+    <Compile Include="Models\JSONParameter.cs" />
     <Compile Include="Models\RconCommandsModel.cs" />
     <Compile Include="Models\RconStaticLibrary.cs" />
     <Compile Include="Helpers\ServerSession.cs" />
@@ -235,7 +236,9 @@
     <Content Include="App_Data\ServerData_log.ldf">
       <DependentUpon>ServerData.mdf</DependentUpon>
     </Content>
-    <Content Include="commands.xml" />
+    <Content Include="commands.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\StyleSheet1.css" />

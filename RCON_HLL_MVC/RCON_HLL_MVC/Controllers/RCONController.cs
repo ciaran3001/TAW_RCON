@@ -1,5 +1,7 @@
 ﻿using RCON_HLL_MVC.App_Start;
+using RCON_HLL_MVC.Helpers;
 using RCON_HLL_MVC.Models;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace RCON_HLL_MVC
@@ -45,6 +47,21 @@ namespace RCON_HLL_MVC
         {
             return Json(new { foo = "bar", baz = "Blech" }, JsonRequestBehavior.AllowGet);
             //   return Json(ccService.Read().ToDataSourceResult(request), JsonRequestBehavior.AllowGet);
+        }
+
+     //   [HttpPost]
+        public ActionResult SendCommand(string CommandJSON)
+        {
+            InputHelper helper = new InputHelper();
+            RconCommand rconCommand;
+            List<RconCommandParameter> populatedParams;
+
+            string json = "{\"command\" :\"Broadcast\",\"requestor\" : \"username\",\"parameters\" : [{\"Hint\" : \"Message (leave empty to clear the last broadcast)\",\"Value\" : \"John Doe\", \"Type\" : \"string\"}]}";
+            if (helper.ConvertJSONToCommand(json, out rconCommand, out populatedParams))
+            {
+                rconCommand.StartExecuting(populatedParams, RCONSetup.RCONSession);
+            }
+            return Json(new { value = "unknown" },JsonRequestBehavior.AllowGet);
         }
         #region Unused ActionResults
         /*  // GET: RCON/Details/5
