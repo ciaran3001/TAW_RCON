@@ -62,7 +62,7 @@
                                                     }
                                                     else
                                                     {
-                                                        <input type="number" id="intparam" required name="@param.Hint">
+                                                        <input type="number" name="@param.Hint" id="intparam" required >
                                                     }
                                                     
                                                 </td>
@@ -113,13 +113,26 @@
                             <span class="button red"></span>
                             <span class="button yellow"></span>
                             <span class="button green"></span>
+                            <b>Server Responses:</b>
                         </header>
 
                         <div class="terminal-home" id="outputWindow" style="overflow-y: scroll; height:400px;">
                             <p class="console">* Listening for server responses</p>
                         </div>
                     </section>
-                </div>
+
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th><b id="playeramount">x/100</b> players online</th>
+                            </tr>
+                        </thead>
+                        <tbody id="playertable">
+
+                        </tbody>
+                    </table>
+</div>
             </div>
 
 
@@ -137,7 +150,7 @@
 
 
             <script>
-
+                var APIHost = "http://localhost:61821";
                 var DisplayResponse = function (response) {
                     var OutputDiv = document.getElementById("outputWindow");
                     OutputDiv.innerHTML += " <p id='response'>" +  JSON.stringify(response) + "</p>";
@@ -164,8 +177,8 @@
 
                     console.log("Response: " + _response);
                 }
-
                 var TriggerCommand = function (formid) {
+                    DisplayResponse(formid + " triggered...")
                     var json = CreateCommandJSON(formid);
                     console.log("triggering for: " + formid);
 
@@ -182,13 +195,29 @@
                         redirect: 'follow'
                     };
 
-                    fetch("http://localhost:61821/RCON/SendCommand?=", requestOptions)
+                    fetch(APIHost+"/RCON/SendCommand?=", requestOptions)
                       .then(response => response.text())
-                      .then(result => alert(result))
+                      .then(result => DisplayResponse(result))
                       .catch(error => console.log('error', error));
                 }
+                var populateValue = function (divid, data) {
+                    var div = document.getElementById(divid);
+                    div.innerHTML = data;
+                }
+                var PopulatePlayers = function (data) {
+                    try{
+                        var table = document.getElementById("playertable");
+                        var players = JSON.parse(data);
+                        table.innerHTML = " ";
 
-
+                        console.log(players)
+                        for (var i = 0; i < players.length; i++) {
+                            table.innerHTML += "<tr><td>"+players[i]+"</td> </tr>";
+                        }
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }
                 var CreateCommandJSON = function (formid) {
                     var obj = {};
                     
@@ -216,8 +245,54 @@
                     console.log(json);
                     return json;
                 }
+                var GetPlayers = function () {
+                    var myHeaders = new Headers();
+                    myHeaders.append("Cookie", "__RequestVerificationToken=zIJv1u6F-0kyGprYczVv4lDKcu37JH1ql1NuqwK2zJsxNaKd8rspMr8OYTyIcuj04drbSfKAJ3pZde9KipCu5BdobkBUChVRSEiMd2qTsew1");
 
-                setInterval(TestGetBans, 5000);
+                    var formdata = new FormData();
+                    formdata.append("Getter", "PlayerNames");
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: formdata,
+                        redirect: 'follow'
+                    };
+
+                    fetch(APIHost+ "/RCON/SendGetter?=", requestOptions)
+                      .then(response => response.text())
+                      .then(result => PopulatePlayers(result))
+                      .catch(error => console.log('error', error));
+                }
+                var GetSlots = function () {
+                    var myHeaders = new Headers();
+                    myHeaders.append("Cookie", "__RequestVerificationToken=zIJv1u6F-0kyGprYczVv4lDKcu37JH1ql1NuqwK2zJsxNaKd8rspMr8OYTyIcuj04drbSfKAJ3pZde9KipCu5BdobkBUChVRSEiMd2qTsew1");
+
+                    var formdata = new FormData();
+                    formdata.append("Getter", "Slots");
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: formdata,
+                        redirect: 'follow'
+                    };
+
+                    fetch(APIHost+"/RCON/SendGetter?=", requestOptions)
+                      .then(response => response.text())
+                      .then(result => populateValue("playeramount",result))
+                      .catch(error => console.log('error', error));
+                }
+                var RunRegularGetters = function () {
+                    console.log("Running getters")
+                    GetSlots();
+                    GetPlayers();
+                    console.log("Finished running getters");
+
+                }
+
+
+                setInterval(RunRegularGetters, 5000);
 
             </script>
         </div>

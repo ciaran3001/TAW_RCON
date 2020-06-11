@@ -169,5 +169,20 @@ namespace RCON_HLL_MVC.Helpers
                 }
             }
         }
+
+        //Query static library for getter.
+        public bool FindGetter(string getter, out RconGetter FoundGetter)
+        {
+            foreach(var _getter in RconStaticLibrary.AvailableGetters)
+            {
+                if(_getter.Name == getter)
+                {
+                    FoundGetter = _getter;
+                    return true;
+                }
+            }
+            FoundGetter = null;
+            return false;
+        }
     }
 }

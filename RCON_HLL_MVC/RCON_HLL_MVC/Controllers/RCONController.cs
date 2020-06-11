@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace RCON_HLL_MVC
 {
-    [Authorize]
+   // [Authorize]
     public class RCONController : Controller
     {
         // GET: RCON
@@ -62,6 +62,24 @@ namespace RCON_HLL_MVC
                 rconCommand.StartExecuting(populatedParams, RCONSetup.RCONSession, out response);
             }
             return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult SendGetter(string Getter)
+        {
+            InputHelper helper = new InputHelper();
+            RconGetter rconGetter;
+            List<RconCommandParameter> populatedParams;
+            string[] response = new string[1]; 
+
+            if(helper.FindGetter(Getter,out rconGetter)){
+                if (rconGetter.GetData(RCONSetup.RCONSession, out response))
+                {
+                    return Json(response, JsonRequestBehavior.AllowGet);
+                }
+            }
+
+            return Json("Failure", JsonRequestBehavior.AllowGet);
         }
         #region Unused ActionResults
         /*  // GET: RCON/Details/5

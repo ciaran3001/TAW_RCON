@@ -42,10 +42,10 @@
                         <tbody id="myTable">
                             @foreach (var item in Model.FoundCommands)
                             {
-                                <form id=@item.m_name>
-                                    <tr>
+                                <form >
+                                    <tr id="@item.m_name">
                                         <td>
-                                            <button type="" onclick="TriggerCommand('@item.m_name')" class="btn btn-primary">@item.m_name</button>
+                                            <button type="button" onclick="TriggerCommand('@item.m_name')" class="btn btn-primary">@item.m_name</button>
                                         </td>
                                         @foreach (var param in item.m_parameters)
                                         {
@@ -62,7 +62,7 @@
                                                     }
                                                     else
                                                     {
-                                                        <input type="number" id="intparam" required name="@param.Hint">
+                                                        <input type="number" name="@param.Hint" id="intparam" required >
                                                     }
                                                     
                                                 </td>
@@ -73,11 +73,11 @@
                                                     <label for="textparam">@param.Hint</label><br />
                                                     @if (@param.Optional)
                                                     {
-                                                        <input type="text"  class="form-control" id="textparam">
+                                                        <input type="text"  name="@param.Hint" class="form-control" id="textparam">
                                                     }
                                                     else
                                                     {
-                                                        <input type="text" required class="form-control" id="textparam">
+                                                        <input type="text" name="@param.Hint" required class="form-control" id="textparam">
                                                     }
                                                     
                                                 </td>
@@ -88,11 +88,11 @@
                                                     <label for="textparam">@param.Hint</label><br />
                                                     @if (@param.Optional)
                                                     {
-                                                        <input type="checkbox" data-toggle="toggle">
+                                                        <input type="checkbox" name="@param.Hint" data-toggle="toggle">
                                                     }
                                                     else
                                                     {
-                                                        <input type="checkbox" required data-toggle="toggle">
+                                                        <input type="checkbox" name="@param.Hint"  required data-toggle="toggle">
                                                     }
                                                     
                                                 </td>
@@ -113,13 +113,26 @@
                             <span class="button red"></span>
                             <span class="button yellow"></span>
                             <span class="button green"></span>
+                            <b>Server Responses:</b>
                         </header>
 
                         <div class="terminal-home" id="outputWindow" style="overflow-y: scroll; height:400px;">
                             <p class="console">* Listening for server responses</p>
                         </div>
                     </section>
-                </div>
+
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th><b id="playeramount">x/100</b> players online</th>
+                            </tr>
+                        </thead>
+                        <tbody id="playertable">
+
+                        </tbody>
+                    </table>
+</div>
             </div>
 
 
@@ -137,7 +150,7 @@
 
 
             <script>
-
+                var APIHost = "http://localhost:61821";
                 var DisplayResponse = function (response) {
                     var OutputDiv = document.getElementById("outputWindow");
                     OutputDiv.innerHTML += " <p id='response'>" +  JSON.stringify(response) + "</p>";
@@ -163,13 +176,123 @@
                       .catch(error => console.log('error', error));
 
                     console.log("Response: " + _response);
-                    return response;
+                }
+                var TriggerCommand = function (formid) {
+                    DisplayResponse(formid + " triggered...")
+                    var json = CreateCommandJSON(formid);
+                    console.log("triggering for: " + formid);
+
+                    var myHeaders = new Headers();
+                    myHeaders.append("Cookie", "__RequestVerificationToken=zIJv1u6F-0kyGprYczVv4lDKcu37JH1ql1NuqwK2zJsxNaKd8rspMr8OYTyIcuj04drbSfKAJ3pZde9KipCu5BdobkBUChVRSEiMd2qTsew1");
+
+                    var formdata = new FormData();
+                    formdata.append("CommandJSON",json);
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: formdata,
+                        redirect: 'follow'
+                    };
+
+                    fetch(APIHost+"/RCON/SendCommand?=", requestOptions)
+                      .then(response => response.text())
+                      .then(result => DisplayResponse(result))
+                      .catch(error => console.log('error', error));
+                }
+                var populateValue = function (divid, data) {
+                    var div = document.getElementById(divid);
+                    div.innerHTML = data;
+                }
+                var PopulatePlayers = function (data) {
+                    try{
+                        var table = document.getElementById("playertable");
+                        var players = JSON.parse(data);
+                        table.innerHTML = " ";
+
+                        console.log(players)
+                        for (var i = 0; i < players.length; i++) {
+                            table.innerHTML += "<tr><td>"+players[i]+"</td> </tr>";
+                        }
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }
+                var CreateCommandJSON = function (formid) {
+                    var obj = {};
+                    
+
+                    var form = document.getElementById(formid);
+
+                    inputs = form.getElementsByTagName("input");
+
+                    obj.command = formid;
+                    obj.requestor = "placeholder";
+                    obj.parameters = [];
+
+                    for (index = 0; index < inputs.length; ++index) {
+                        // deal with inputs[index] element.
+                        var _tmp = {};
+                        _tmp.Hint = inputs[index].name;
+                        _tmp.Value = inputs[index].value.toString();
+                        _tmp.Type = inputs[index].type.toString();
+
+                        console.log("Found: " + inputs[index].name + ": " + inputs[index].value);
+                        obj.parameters[index] = _tmp;
+                    }
+
+                    var json = JSON.stringify(obj);
+                    console.log(json);
+                    return json;
+                }
+                var GetPlayers = function () {
+                    var myHeaders = new Headers();
+                    myHeaders.append("Cookie", "__RequestVerificationToken=zIJv1u6F-0kyGprYczVv4lDKcu37JH1ql1NuqwK2zJsxNaKd8rspMr8OYTyIcuj04drbSfKAJ3pZde9KipCu5BdobkBUChVRSEiMd2qTsew1");
+
+                    var formdata = new FormData();
+                    formdata.append("Getter", "PlayerNames");
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: formdata,
+                        redirect: 'follow'
+                    };
+
+                    fetch(APIHost+ "/RCON/SendGetter?=", requestOptions)
+                      .then(response => response.text())
+                      .then(result => PopulatePlayers(result))
+                      .catch(error => console.log('error', error));
+                }
+                var GetSlots = function () {
+                    var myHeaders = new Headers();
+                    myHeaders.append("Cookie", "__RequestVerificationToken=zIJv1u6F-0kyGprYczVv4lDKcu37JH1ql1NuqwK2zJsxNaKd8rspMr8OYTyIcuj04drbSfKAJ3pZde9KipCu5BdobkBUChVRSEiMd2qTsew1");
+
+                    var formdata = new FormData();
+                    formdata.append("Getter", "Slots");
+
+                    var requestOptions = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: formdata,
+                        redirect: 'follow'
+                    };
+
+                    fetch(APIHost+"/RCON/SendGetter?=", requestOptions)
+                      .then(response => response.text())
+                      .then(result => populateValue("playeramount",result))
+                      .catch(error => console.log('error', error));
+                }
+                var RunRegularGetters = function () {
+                    console.log("Running getters")
+                    GetSlots();
+                    GetPlayers();
+                    console.log("Finished running getters");
+
                 }
 
-                var TriggerCommand = function(formid){
-                    console.log("triggering for: " + formid);
-                }
-                setInterval(TestGetBans, 5000);
+
+                setInterval(RunRegularGetters, 5000);
 
             </script>
         </div>
