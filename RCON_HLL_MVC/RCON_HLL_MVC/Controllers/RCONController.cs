@@ -1,12 +1,14 @@
 ﻿using RCON_HLL_MVC.App_Start;
 using RCON_HLL_MVC.Helpers;
 using RCON_HLL_MVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace RCON_HLL_MVC
 {
-   // [Authorize]
+    [Authorize]
+    [AllowCrossSite]
     public class RCONController : Controller
     {
         // GET: RCON
@@ -79,7 +81,46 @@ namespace RCON_HLL_MVC
                 }
             }
 
-            return Json("Failure", JsonRequestBehavior.AllowGet);
+            return Json("Session connected: 2" + RCONSetup.RCONSession.Status+ 
+                " Authenticated " + RCONSetup.RCONSession.StatsAuthenticated+
+                " ServerInfo: " + RCONSetup.RCONSession.ServerInfo +
+                " Status Message " + RCONSetup.RCONSession.StatusMessage +
+                " Disconnected " + RCONSetup.RCONSession.Disconnected +
+                " Status Authenticated " + RCONSetup.RCONSession.StatsAuthenticated +
+                "Failure " + response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult CreateNewSession(string ip, int port, string password)
+        {
+            try
+            {
+                //ServerSession.m_communicationMutex.ReleaseMutex();
+
+                ServerConnectionDetails details = new ServerConnectionDetails(ip, port, password);
+                ServerSession _session = new ServerSession(details);
+                if (_session.Connect())
+                {
+                    RCONSetup.RCONSession = _session;
+                    ServerSession.m_communicationMutex.WaitOne();
+                    _session.SendMessage(string.Format(ServerSession.s_rconLoginCommand, (object)RconCommand.QuoteString(details.ServerPassword)), true);
+                    string receivedMessage;
+                    var m_lastCommandSucceeded = _session.ReceiveMessage(out receivedMessage, true, true) && RconStaticLibrary.IsSuccessReply(receivedMessage);
+
+                    return Json("Create new session: " + RCONSetup.RCONSession.Status +
+                    " Authenticated " + RCONSetup.RCONSession.StatsAuthenticated +
+                    " ServerInfo: " + RCONSetup.RCONSession.ServerInfo +
+                    " Status Message " + RCONSetup.RCONSession.StatusMessage +
+                    " Disconnected " + RCONSetup.RCONSession.Disconnected +
+                    " Status Authenticated " + RCONSetup.RCONSession.StatsAuthenticated  , JsonRequestBehavior.AllowGet);
+                }
+                return Json("Unable to connect", JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                return Json(e.Message, JsonRequestBehavior.AllowGet);
+            }
+
         }
         #region Unused ActionResults
         /*  // GET: RCON/Details/5

@@ -14,7 +14,7 @@ namespace RCON_HLL_MVC.Helpers
     public class ServerSession : INotifyPropertyChanged
     {
         private static int s_messageBufferSize = 8196;
-        private static string s_rconLoginCommand = "login {0}";
+        public static string s_rconLoginCommand = "login {0}";
         private bool m_authenticated;
         private bool m_statsAuthenticated;
         private ServerConnectionDetails m_connectionDetails;
@@ -23,7 +23,7 @@ namespace RCON_HLL_MVC.Helpers
         private TcpClient m_client;
         private byte[] m_xorKey;
         private bool m_lastCommandSucceeded;
-        private Mutex m_communicationMutex;
+        public static Mutex m_communicationMutex;
 
         //Getter , Setter for authenticated. 
         public bool Authenticated
