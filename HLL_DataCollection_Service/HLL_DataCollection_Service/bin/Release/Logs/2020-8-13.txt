@@ -1,0 +1,185 @@
+8/13/2020 4:37:26 PM: Getting Data From Server
+8/13/2020 4:37:26 PM: Connected after 0MS
+8/13/2020 4:49:19 PM: Getting Data From Server
+8/13/2020 4:49:19 PM: Connected after 0MS
+8/13/2020 4:55:16 PM: Received: System.Byte[]
+8/13/2020 4:56:08 PM: Received: System.Byte[]
+8/13/2020 5:02:45 PM: Received: System.Byte[]
+8/13/2020 5:06:47 PM: Received: System.Byte[]
+8/13/2020 5:06:47 PM: Received: System.Byte[]
+8/13/2020 5:06:52 PM: Received: System.Byte[]
+8/13/2020 5:06:57 PM: Received: System.Byte[]
+8/13/2020 5:10:10 PM: Received: System.Byte[]
+8/13/2020 5:10:10 PM: Received: System.Byte[]
+8/13/2020 5:11:10 PM: Received: System.Byte[]
+8/13/2020 5:12:10 PM: Received: System.Byte[]
+8/13/2020 5:13:10 PM: Received: System.Byte[]
+8/13/2020 5:14:11 PM: Received: System.Byte[]
+8/13/2020 5:15:11 PM: Received: System.Byte[]
+8/13/2020 5:17:19 PM: Received: SUCCESS
+8/13/2020 5:17:19 PM: Received: [3:46 min] CONNECTED TAW | ciaran3001
+[3:23 min] CHAT[Team][TAW | ciaran3001(Allies/76561198024156977)]: lol
+[2:25 min] CHAT[Team][TAW | ciaran3001(Allies/76561198024156977)]: test t2
+[1:26 min] DISCONNECTED TAW | ciaran3001
+
+8/13/2020 5:22:19 PM: Received: EMPTY
+8/13/2020 7:10:12 PM: Received: SUCCESS
+8/13/2020 7:10:12 PM: Received: EMPTY
+8/13/2020 7:15:12 PM: Received: [2:01 min] CONNECTED TAW | Juambiya
+[1:31 min] DISCONNECTED TAW | Juambiya
+[14.1 sec] CONNECTED TAW | Juambiya
+
+8/13/2020 7:20:12 PM: Received: [4:58 min] DISCONNECTED silverdawn
+
+8/13/2020 7:25:12 PM: Received: EMPTY
+8/13/2020 7:30:12 PM: Received: [27.1 sec] CONNECTED Fazzmazz
+
+8/13/2020 8:00:32 PM: Received: SUCCESS
+8/13/2020 8:00:33 PM: Received: [4:16 min] CONNECTED TAW | FERGIE
+[4:09 min] TEAM KILL: Animism(Allies/76561197993087998) -> TAW | Steelgate(Allies/76561198070610984) with Garand
+[4:06 min] TEAM KILL: Animism(Allies/76561197993087998) -> TAW | Samke(Allies/76561198224950396) with Garand
+[3:52 min] TEAM KILL: Animism(Allies/76561197993087998) -> Fazzmazz(Allies/76561198000927914) with Garand
+[3:41 min] TEAM KILL: Animism(Allies/76561197993087998) -> silverdawn(Allies/76561198407219955) with Garand
+[3:39 min] TEAM KILL: Animism(Allies/76561197993087998) -> Lucutus(Allies/76561197970349478) with Garand
+[3:06 min] TEAM KILL: Animism(Allies/76561197993087998) -> TAW | Juambiya(Allies/76561198058795686) with Garand
+[2:55 min] TEAM KILL: Animism(Allies/76561197993087998) -> TAW | Samke(Allies/76561198224950396) with Garand
+[2:24 min] TEAM KILL: Animism(Allies/76561197993087998) -> Fazzmazz(Allies/76561198000927914) with Garand
+[2:19 min] TEAM KILL: Animism(Allies/76561197993087998) -> TAW | Steelgate(Allies/76561198070610984) with Garand
+[2:19 min] TEAM KILL: Animism(Allies/76561197993087998) -> TAW | Juambiya(Allies/76561198058795686) with Garand
+[2:04 min] TEAM KILL: Animism(Allies/76561197993087998) -> TAW | Samke(Allies/76561198224950396) with Garand
+[1:53 min] CONNECTED TAW | Mystic
+[59.5 sec] TEAM KILL: Animism(Allies/76561197993087998) -> TAW | Samke(Allies/76561198224950396) with Garand
+[34.1 sec] TEAM KILL: Animism(Allies/76561197993087998) -> TAW | Juambiya(Allies/76561198058795686) with Garand
+[33.2 sec] TEAM KILL: Animism(Allies/76561197993087998) -> Lucutus(Allies/76561197970349478) with Garand
+
+8/13/2020 8:05:33 PM: Received: [4:06 min] TEAM KILL: silverdawn(Allies/76561198407219955) -> TAW | Samke(Allies/76561198224950396) with M1_Carbine
+[3:19 min] TEAM KILL: TAW | Samke(Allies/76561198224950396) -> Lucutus(Allies/76561197970349478) with None
+[2:16 min] TEAM KILL: TAW | Samke(Allies/76561198224950396) -> TAW | Juambiya(Allies/76561198058795686) with Thompson
+[1:50 min] TEAM KILL: TAW | Samke(Allies/76561198224950396) -> Fazzmazz(Allies/76561198000927914) with Thompson
+[1:12 min] TEAM KILL: TAW | Samke(Allies/76561198224950396) -> Animism(Allies/76561197993087998) with Thompson
+[51.8 sec] TEAM KILL: TAW | Samke(Allies/76561198224950396) -> Lucutus(Allies/76561197970349478) with Thompson
+[30.0 sec] TEAM KILL: TAW | Samke(Allies/76561198224950396) -> TAW | Steelgate(Allies/76561198070610984) with Thompson
+
+8/13/2020 8:10:33 PM: Received: [4:43 min] CONNECTED TAW | ciaran3001
+[4:32 min] CONNECTED Qludse
+[3:40 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> TAW | ciaran3001(Allies/76561198024156977) with M1919
+[3:33 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> silverdawn(Allies/76561198407219955) with M1919
+[3:29 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> TAW | Samke(Allies/76561198224950396) with M1919
+[3:08 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> Fazzmazz(Allies/76561198000927914) with M1919
+[2:57 min] CHAT[Team][TAW | ciaran3001(Allies/76561198024156977)]: y do u h8 me
+[2:52 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> TAW | ciaran3001(Allies/76561198024156977) with M1919
+[2:17 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> TAW | Steelgate(Allies/76561198070610984) with M1919
+[2:14 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> TAW | ciaran3001(Allies/76561198024156977) with M1919
+[2:07 min] CONNECTED TAW | Kojot
+[2:01 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> Qludse(Allies/76561197993386174) with M1919
+[1:58 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> Animism(Allies/76561197993087998) with M1919
+[1:51 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> Lucutus(Allies/76561197970349478) with M1919
+[1:25 min] TEAM KILL: TAW | Juambiya(Allies/76561198058795686) -> TAW | Mystic(Allies/76561198001785000) with M1919
+[32.0 sec] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> Animism(Allies/76561197993087998) with M1919
+
+8/13/2020 8:15:33 PM: Received: [4:36 min] TEAM KILL: Lucutus(Allies/76561197970349478) -> TAW | Juambiya(Allies/76561198058795686) with MK2_Grenade
+[4:36 min] TEAM KILL: Lucutus(Allies/76561197970349478) -> Fazzmazz(Allies/76561198000927914) with MK2_Grenade
+[4:17 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Samke(Allies/76561198224950396) with M1919
+[4:04 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> Qludse(Allies/76561197993386174) with M1919
+[3:54 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Kojot(Allies/76561198407278743) with M1919
+[3:44 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | ciaran3001(Allies/76561198024156977) with M1919
+[3:28 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Steelgate(Allies/76561198070610984) with M1919
+[3:17 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> Lucutus(Allies/76561197970349478) with M1919
+[3:03 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> Fazzmazz(Allies/76561198000927914) with M1919
+[2:51 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> Qludse(Allies/76561197993386174) with M1919
+[2:46 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Kojot(Allies/76561198407278743) with M1919
+[2:40 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> silverdawn(Allies/76561198407219955) with M1919
+[2:01 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Samke(Allies/76561198224950396) with M1919
+[1:28 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Kojot(Allies/76561198407278743) with M1919
+[1:18 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Juambiya(Allies/76561198058795686) with M1919
+[49.2 sec] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> Lucutus(Allies/76561197970349478) with M1919
+[43.5 sec] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Mystic(Allies/76561198001785000) with M1919
+
+8/13/2020 8:20:33 PM: Received: [4:53 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Steelgate(Allies/76561198070610984) with M1919
+[4:48 min] TEAM KILL: TAW | FERGIE(Allies/76561197977886778) -> TAW | Kojot(Allies/76561198407278743) with M1911
+
+8/13/2020 8:25:33 PM: Received: EMPTY
+8/13/2020 8:30:33 PM: Received: [4:58 min] KILL: TAW | FERGIE(Axis/76561197977886778) -> Qludse(Allies/76561197993386174) with G43
+[4:52 min] KILL: silverdawn(Allies/76561198407219955) -> TAW | FERGIE(Axis/76561197977886778) with M1_Carbine
+[3:40 min] KILL: TAW | Samke(Allies/76561198224950396) -> Lucutus(Axis/76561197970349478) with Thompson
+[2:56 min] KILL: Fazzmazz(Axis/76561198000927914) -> silverdawn(Allies/76561198407219955) with Kar98
+[2:36 min] KILL: Qludse(Allies/76561197993386174) -> TAW | Juambiya(Axis/76561198058795686) with Garand
+[2:15 min] KILL: Fazzmazz(Axis/76561198000927914) -> Qludse(Allies/76561197993386174) with Kar98
+[1:28 min] KILL: silverdawn(Allies/76561198407219955) -> Fazzmazz(Axis/76561198000927914) with M1_Carbine
+[1:13 min] KILL: TAW | Mystic(Axis/76561198001785000) -> TAW | Steelgate(Allies/76561198070610984) with STG44
+[1:09 min] KILL: TAW | Juambiya(Axis/76561198058795686) -> TAW | Samke(Allies/76561198224950396) with Kar98
+[1:02 min] KILL: silverdawn(Allies/76561198407219955) -> TAW | FERGIE(Axis/76561197977886778) with M1_Carbine
+[6.69 sec] KILL: TAW | Kojot(Allies/76561198407278743) -> Fazzmazz(Axis/76561198000927914) with Garand
+
+8/13/2020 8:35:33 PM: Received: [4:49 min] KILL: TAW | Juambiya(Axis/76561198058795686) -> Qludse(Allies/76561197993386174) with Kar98
+[4:41 min] KILL: silverdawn(Allies/76561198407219955) -> TAW | Juambiya(Axis/76561198058795686) with M1_Carbine
+[4:03 min] KILL: Qludse(Allies/76561197993386174) -> Lucutus(Axis/76561197970349478) with None
+[3:52 min] KILL: TAW | Mystic(Axis/76561198001785000) -> Animism(Allies/76561197993087998) with STG44
+[3:50 min] KILL: TAW | Kojot(Allies/76561198407278743) -> TAW | FERGIE(Axis/76561197977886778) with Garand
+[3:24 min] KILL: Fazzmazz(Axis/76561198000927914) -> TAW | Kojot(Allies/76561198407278743) with Kar98
+[3:21 min] KILL: silverdawn(Allies/76561198407219955) -> TAW | Mystic(Axis/76561198001785000) with M1_Carbine
+[2:19 min] KILL: Fazzmazz(Axis/76561198000927914) -> Animism(Allies/76561197993087998) with Kar98
+[1:43 min] KILL: Qludse(Allies/76561197993386174) -> Fazzmazz(Axis/76561198000927914) with M1_Carbine
+[1:06 min] KILL: TAW | Juambiya(Axis/76561198058795686) -> silverdawn(Allies/76561198407219955) with P38
+[59.3 sec] KILL: TAW | Juambiya(Axis/76561198058795686) -> TAW | Steelgate(Allies/76561198070610984) with Kar98
+[58.7 sec] KILL: TAW | ciaran3001(Axis/76561198024156977) -> Qludse(Allies/76561197993386174) with MG42
+[44.9 sec] KILL: TAW | Samke(Allies/76561198224950396) -> Fazzmazz(Axis/76561198000927914) with Thompson
+[20.4 sec] KILL: TAW | ciaran3001(Axis/76561198024156977) -> TAW | Samke(Allies/76561198224950396) with MG42
+
+8/13/2020 8:40:33 PM: Received: [4:51 min] KILL: TAW | Juambiya(Axis/76561198058795686) -> Animism(Allies/76561197993087998) with Kar98
+[4:18 min] KILL: Qludse(Allies/76561197993386174) -> TAW | Juambiya(Axis/76561198058795686) with M1_Carbine
+[4:13 min] KILL: TAW | Kojot(Allies/76561198407278743) -> TAW | ciaran3001(Axis/76561198024156977) with Garand
+[4:10 min] KILL: silverdawn(Allies/76561198407219955) -> Fazzmazz(Axis/76561198000927914) with M1_Carbine
+[3:54 min] KILL: silverdawn(Allies/76561198407219955) -> TAW | Mystic(Axis/76561198001785000) with M1_Carbine
+[3:54 min] KILL: Lucutus(Axis/76561197970349478) -> Qludse(Allies/76561197993386174) with MP40
+[3:53 min] KILL: TAW | Steelgate(Allies/76561198070610984) -> TAW | FERGIE(Axis/76561197977886778) with M1_Carbine
+[3:31 min] KILL: Lucutus(Axis/76561197970349478) -> silverdawn(Allies/76561198407219955) with MP40
+[3:21 min] KILL: TAW | Steelgate(Allies/76561198070610984) -> Lucutus(Axis/76561197970349478) with M1_Carbine
+[2:51 min] KILL: TAW | Kojot(Allies/76561198407278743) -> TAW | Juambiya(Axis/76561198058795686) with Garand
+[1:58 min] KILL: TAW | ciaran3001(Axis/76561198024156977) -> TAW | Kojot(Allies/76561198407278743) with MG42
+[1:38 min] DISCONNECTED Fazzmazz
+[1:29 min] KILL: Qludse(Allies/76561197993386174) -> TAW | Juambiya(Axis/76561198058795686) with M1_Carbine
+[48.0 sec] KILL: TAW | Samke(Allies/76561198224950396) -> Lucutus(Axis/76561197970349478) with Thompson
+[33.2 sec] KILL: Qludse(Allies/76561197993386174) -> TAW | ciaran3001(Axis/76561198024156977) with M1_Carbine
+
+8/13/2020 8:45:33 PM: Received: [4:30 min] KILL: Qludse(Allies/76561197993386174) -> TAW | ciaran3001(Axis/76561198024156977) with M1_Carbine
+[4:28 min] KILL: TAW | FERGIE(Axis/76561197977886778) -> TAW | Kojot(Allies/76561198407278743) with G43
+[4:20 min] KILL: TAW | Mystic(Axis/76561198001785000) -> TAW | Samke(Allies/76561198224950396) with STG44
+[4:18 min] KILL: Animism(Allies/76561197993087998) -> TAW | Mystic(Axis/76561198001785000) with Garand
+[3:42 min] KILL: Qludse(Allies/76561197993386174) -> Lucutus(Axis/76561197970349478) with M1_Carbine
+[2:19 min] KILL: TAW | ciaran3001(Axis/76561198024156977) -> Qludse(Allies/76561197993386174) with MG42
+[2:14 min] KILL: TAW | Kojot(Allies/76561198407278743) -> TAW | ciaran3001(Axis/76561198024156977) with Garand
+[1:55 min] KILL: Lucutus(Axis/76561197970349478) -> TAW | Samke(Allies/76561198224950396) with G43
+[1:42 min] KILL: Animism(Allies/76561197993087998) -> TAW | Mystic(Axis/76561198001785000) with Garand
+[1:06 min] KILL: TAW | Juambiya(Axis/76561198058795686) -> silverdawn(Allies/76561198407219955) with Kar98
+[38.9 sec] KILL: TAW | Juambiya(Axis/76561198058795686) -> TAW | Steelgate(Allies/76561198070610984) with Kar98
+[26.6 sec] KILL: Lucutus(Axis/76561197970349478) -> Qludse(Allies/76561197993386174) with G43
+[9.89 sec] KILL: TAW | FERGIE(Axis/76561197977886778) -> TAW | Kojot(Allies/76561198407278743) with G43
+
+8/13/2020 8:50:33 PM: Received: [3:37 min] KILL: TAW | Samke(Allies/76561198224950396) -> TAW | ciaran3001(Axis/76561198024156977) with Thompson
+[3:30 min] KILL: TAW | Juambiya(Axis/76561198058795686) -> silverdawn(Allies/76561198407219955) with Kar98
+[3:21 min] KILL: TAW | FERGIE(Axis/76561197977886778) -> Qludse(Allies/76561197993386174) with G43
+[3:20 min] KILL: silverdawn(Allies/76561198407219955) -> Lucutus(Axis/76561197970349478) with M1_Carbine
+[3:11 min] KILL: TAW | Kojot(Allies/76561198407278743) -> TAW | FERGIE(Axis/76561197977886778) with Garand
+[3:02 min] KILL: TAW | Juambiya(Axis/76561198058795686) -> TAW | Steelgate(Allies/76561198070610984) with Kar98
+[2:45 min] KILL: TAW | ciaran3001(Axis/76561198024156977) -> TAW | Samke(Allies/76561198224950396) with MG42
+[2:37 min] KILL: Animism(Allies/76561197993087998) -> TAW | ciaran3001(Axis/76561198024156977) with Garand
+[2:11 min] KILL: Animism(Allies/76561197993087998) -> Lucutus(Axis/76561197970349478) with Garand
+[1:47 min] KILL: Qludse(Allies/76561197993386174) -> TAW | Juambiya(Axis/76561198058795686) with M1_Carbine
+[1:08 min] KILL: TAW | Mystic(Axis/76561198001785000) -> Qludse(Allies/76561197993386174) with STG44
+[1:07 min] KILL: TAW | ciaran3001(Axis/76561198024156977) -> Animism(Allies/76561197993087998) with MG42
+[52.5 sec] KILL: TAW | Steelgate(Allies/76561198070610984) -> TAW | Mystic(Axis/76561198001785000) with M1_Carbine
+
+8/13/2020 8:55:33 PM: Received: [4:56 min] KILL: TAW | Juambiya(Axis/76561198058795686) -> TAW | Steelgate(Allies/76561198070610984) with Kar98
+[4:55 min] KILL: Qludse(Allies/76561197993386174) -> TAW | Juambiya(Axis/76561198058795686) with M1_Carbine
+[4:47 min] KILL: TAW | ciaran3001(Axis/76561198024156977) -> TAW | Samke(Allies/76561198224950396) with MG42
+[4:17 min] KILL: TAW | ciaran3001(Axis/76561198024156977) -> TAW | Kojot(Allies/76561198407278743) with MG42
+[3:19 min] KILL: Qludse(Allies/76561197993386174) -> TAW | Juambiya(Axis/76561198058795686) with M1_Carbine
+[2:47 min] KILL: TAW | Samke(Allies/76561198224950396) -> TAW | Mystic(Axis/76561198001785000) with Thompson
+[2:36 min] KILL: Qludse(Allies/76561197993386174) -> TAW | ciaran3001(Axis/76561198024156977) with M1_Carbine
+[2:30 min] KILL: TAW | ciaran3001(Axis/76561198024156977) -> TAW | Steelgate(Allies/76561198070610984) with MG42
+[1:45 min] KILL: TAW | Samke(Allies/76561198224950396) -> TAW | Mystic(Axis/76561198001785000) with Thompson
+[57.4 sec] KILL: TAW | Juambiya(Axis/76561198058795686) -> Animism(Allies/76561197993087998) with Kar98
+[52.5 sec] KILL: TAW | ciaran3001(Axis/76561198024156977) -> TAW | Kojot(Allies/76561198407278743) with MG42
+[41.9 sec] KILL: TAW | Samke(Allies/76561198224950396) -> TAW | Juambiya(Axis/76561198058795686) with Thompson
+

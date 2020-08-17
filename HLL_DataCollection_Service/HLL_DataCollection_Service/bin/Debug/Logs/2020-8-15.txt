@@ -1,0 +1,14 @@
+8/15/2020 1:24:48 PM: Received: SUCCESS
+8/15/2020 1:24:48 PM: Received: [3:09 min] CONNECTED TAW | ciaran3001
+[3:02 min] CHAT[Team][TAW | ciaran3001(Allies/76561198024156977)]: kekek
+[1:27 min] CHAT[Team][TAW | ciaran3001(Allies/76561198024156977)]: lalidjwdliwhd
+
+8/15/2020 1:39:33 PM: Received: SUCCESS
+8/15/2020 1:39:33 PM: Received: EMPTY
+8/15/2020 1:39:58 PM: Received: SUCCESS
+8/15/2020 1:39:58 PM: Received: [12.6 sec] CHAT[Team][TAW | ciaran3001(Allies/76561198024156977)]: shoopadooopdoop
+
+8/15/2020 1:42:24 PM: Received: SUCCESS
+8/15/2020 1:42:24 PM: Received: [2:38 min] CHAT[Team][TAW | ciaran3001(Allies/76561198024156977)]: shoopadooopdoop
+[9.15 sec] CHAT[Team][TAW | ciaran3001(Allies/76561198024156977)]: test 2
+

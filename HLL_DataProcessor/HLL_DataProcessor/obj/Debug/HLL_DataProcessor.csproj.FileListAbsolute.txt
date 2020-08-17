@@ -1,0 +1,6 @@
+C:\Users\Administrator\Desktop\New folder\HLL_DataProcessor\HLL_DataProcessor\bin\Debug\HLL_DataProcessor.exe.config
+C:\Users\Administrator\Desktop\New folder\HLL_DataProcessor\HLL_DataProcessor\bin\Debug\HLL_DataProcessor.exe
+C:\Users\Administrator\Desktop\New folder\HLL_DataProcessor\HLL_DataProcessor\bin\Debug\HLL_DataProcessor.pdb
+C:\Users\Administrator\Desktop\New folder\HLL_DataProcessor\HLL_DataProcessor\obj\Debug\HLL_DataProcessor.exe
+C:\Users\Administrator\Desktop\New folder\HLL_DataProcessor\HLL_DataProcessor\obj\Debug\HLL_DataProcessor.pdb
+C:\Users\Administrator\Desktop\New folder\HLL_DataProcessor\HLL_DataProcessor\obj\Debug\HLL_DataProcessor.csprojResolveAssemblyReference.cache

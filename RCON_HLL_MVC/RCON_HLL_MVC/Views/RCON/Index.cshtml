@@ -13,6 +13,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <p><b>Server: </b>176.57.168.232</p>
+                    <button type="button" onclick="CreateNewSession()" class="btn btn-primary">Try Create new session</button>
                 </div>
             </div>
             <div class="row">
@@ -46,6 +47,12 @@
                                     <tr id="@item.m_name">
                                         <td>
                                             <button type="button" onclick="TriggerCommand('@item.m_name')" class="btn btn-primary">@item.m_name</button>
+                                            @if (@item.m_name.Contains("roadc"))
+                                            {
+                                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                                                Start Broadcast Cycle
+                                            </button>
+                                            }
                                         </td>
                                         @foreach (var param in item.m_parameters)
                                         {
@@ -106,7 +113,46 @@
                         </tbody>
                     </table>
                 </div>
-
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Queue up to 5 broadcasts.  (Web page must be kept open)</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="alert alert-success" role="alert">
+                                    <b>Broadcast 1</b>
+                                    <input placeholder="EMPTY" type="text" name="brd1" class="form-control" id="textparam">
+                                </div>
+                                <div class="alert alert-success" role="alert">
+                                    <b>Broadcast 2</b>
+                                    <input placeholder="EMPTY" type="text" name="brd2" class="form-control" id="textparam">
+                                </div>
+                                <div class="alert alert-success" role="alert">
+                                    <b>Broadcast 3</b>
+                                    <input placeholder="EMPTY" type="text" name="brd3" class="form-control" id="textparam">
+                                </div>
+                                <div class="alert alert-success" role="alert">
+                                    <b>Broadcast 4</b>
+                                    <input placeholder="EMPTY" type="text" name="brd4" class="form-control" id="textparam">
+                                </div>
+                                <div class="alert alert-success" role="alert">
+                                    <b>Broadcast 5</b>
+                                    <input placeholder="EMPTY" type="text" name="brd5" class="form-control" id="textparam">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-success">Start Cycle</button>
+                                <button type="button" class="btn btn-danger">Stop Cycle</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-sm-5">
                     <section class="terminal-container terminal-fixed-top">
                         <header class="terminal">
@@ -291,8 +337,28 @@
 
                 }
 
+                var CreateNewSession = function () {
+                    var formdata = new FormData();
+                    formdata.append("ip", "176.57.168.232");
+                    formdata.append("port", "28316");
+                    formdata.append("password", "TAWadminJune06");
+                      
+                    var requestOptions = {
+                        method: 'POST',
+                        body: formdata,
+                        redirect: 'follow'
+                    };
+
+                    fetch("http://45.146.252.33/RCON/CreateNewSession", requestOptions)
+                      .then(response => response.text())
+                      .then(result => console.log(result))
+                      .catch(error => console.log('error', error));
+                }
+
+                RunRegularGetters();
 
                 setInterval(RunRegularGetters, 5000);
+
 
             </script>
         </div>

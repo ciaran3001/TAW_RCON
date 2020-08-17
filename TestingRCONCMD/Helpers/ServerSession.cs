@@ -120,10 +120,11 @@ namespace TestingRCONCMD.Helpers
         {
             ConnectionDetails = serverConnectionDetails;
             m_cachedGetterData = new Dictionary<RconGetter, string[]>();
-            m_communicationMutex = new Mutex();
+            m_communicationMutex = new Mutex(false);
+          //  m_communicationMutex.Close();
             Connect();
         }
-
+            
         ~ServerSession()
         {
             if (m_client == null)
@@ -143,7 +144,8 @@ namespace TestingRCONCMD.Helpers
             //If connection times out (5 seconds) return false 
             if (!m_communicationMutex.WaitOne(5000))
             {
-                return false;
+                Console.WriteLine("Mutex not available. ");
+                //return false;
             }
 
             try
@@ -255,6 +257,7 @@ namespace TestingRCONCMD.Helpers
             {
                 m_client = new TcpClient();
                 TcpClient client = m_client;
+                client.Client.Blocking = false;
                 ServerConnectionDetails connectionDetails = ConnectionDetails;
                 string serverAddress = connectionDetails.ServerAddress;
                 connectionDetails = ConnectionDetails;
@@ -265,9 +268,13 @@ namespace TestingRCONCMD.Helpers
             catch (Exception ex)
             {
                 Console.WriteLine("ServerSession.Connect Error:: " + ex.Message);
+          
                 //Simplified Error handling to decrease code size. 
                 return false;
                 OnConnectionProblems("ServerSession.Connect Error: " + ex.Message);
+            }
+            finally{
+                
             }
         }
 
@@ -278,6 +285,7 @@ namespace TestingRCONCMD.Helpers
                 try
                 {
                     connectionTask.Wait();
+                    m_communicationMutex.ReleaseMutex();
                 }
                 catch (AggregateException ex)
                 {
@@ -285,6 +293,10 @@ namespace TestingRCONCMD.Helpers
                     {
                         throw x;
                     }));
+                }
+                finally
+                {
+                   
                 }
             }
             catch (Exception ex)
@@ -304,9 +316,17 @@ namespace TestingRCONCMD.Helpers
                 }
                 else
                 {
+                    Console.WriteLine("Connected: " + m_client.Connected);
+                    Console.WriteLine("TCP Available: " + m_client.Available);
+                    Console.WriteLine("Blocked: " + m_client.Client.Blocking);
+                    Console.WriteLine("Local Port: " + m_client.Client.IsBound);
+                    Console.WriteLine("Remove Endpoint: " + m_client.Client.RemoteEndPoint);
+                    Console.WriteLine("Ttl: " + m_client.Client.Ttl);
+
                     SendMessage(string.Format(ServerSession.s_rconLoginCommand, (object)RconCommand.QuoteString(ConnectionDetails.ServerPassword)), true);
                     string receivedMessage;
                     m_lastCommandSucceeded = ReceiveMessage(out receivedMessage, true, true) && RconStaticLibrary.IsSuccessReply(receivedMessage);
+                    Console.WriteLine("Login: " + receivedMessage);
                     Authenticated = m_lastCommandSucceeded;
                     OnPropertyChanged("Disconnected");
                     OnPropertyChanged("Status");

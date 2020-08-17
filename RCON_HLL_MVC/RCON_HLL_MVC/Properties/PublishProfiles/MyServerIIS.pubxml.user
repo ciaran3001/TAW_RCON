@@ -25,6 +25,42 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2020 10:52:36</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
+<<<<<<< HEAD
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>03/02/2015 09:32:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>12/07/2015 19:04:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>03/10/2016 14:26:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>03/09/2016 12:00:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>03/09/2016 11:57:34</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
+      <publishTime>04/03/2015 18:07:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.EntityFramework.dll">
+      <publishTime>04/03/2015 18:07:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
+      <publishTime>04/03/2015 18:07:22</publishTime>
+=======
       <publishTime>06/12/2020 10:52:13</publishTime>
     </File>
     <File Include="bin/EntityFramework.SqlServer.dll">
@@ -59,6 +95,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Owin.dll">
       <publishTime>06/12/2020 10:52:22</publishTime>
+>>>>>>> 0cabe9992f88f6bfda223f431ecc31fc356856de
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/12/2020 10:52:27</publishTime>
@@ -94,13 +131,21 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2020 10:52:32</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
+<<<<<<< HEAD
+      <publishTime>08/03/2014 21:33:56</publishTime>
+=======
       <publishTime>06/12/2020 10:52:33</publishTime>
+>>>>>>> 0cabe9992f88f6bfda223f431ecc31fc356856de
     </File>
     <File Include="bin/Owin.dll">
       <publishTime>06/12/2020 10:52:34</publishTime>
     </File>
     <File Include="bin/RCON_HLL_MVC.dll">
+<<<<<<< HEAD
+      <publishTime>06/12/2020 10:40:23</publishTime>
+=======
       <publishTime>06/12/2020 11:47:17</publishTime>
+>>>>>>> 0cabe9992f88f6bfda223f431ecc31fc356856de
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/12/2020 10:52:27</publishTime>
@@ -154,7 +199,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2020 10:52:23</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
+<<<<<<< HEAD
+      <publishTime>02/11/2014 15:26:04</publishTime>
+=======
       <publishTime>06/12/2020 10:52:24</publishTime>
+>>>>>>> 0cabe9992f88f6bfda223f431ecc31fc356856de
     </File>
     <File Include="bin/System.Web.Razor.dll">
       <publishTime>06/12/2020 10:52:24</publishTime>
@@ -169,7 +218,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2020 10:52:26</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
+<<<<<<< HEAD
+      <publishTime>09/10/2013 18:28:38</publishTime>
+=======
       <publishTime>06/12/2020 10:52:34</publishTime>
+>>>>>>> 0cabe9992f88f6bfda223f431ecc31fc356856de
     </File>
     <File Include="commands.xml">
       <publishTime>06/12/2020 10:52:47</publishTime>
@@ -331,7 +384,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2020 10:53:04</publishTime>
     </File>
     <File Include="Views/RCON/Index.cshtml">
+<<<<<<< HEAD
+      <publishTime>06/12/2020 00:12:46</publishTime>
+=======
       <publishTime>06/12/2020 11:35:50</publishTime>
+>>>>>>> 0cabe9992f88f6bfda223f431ecc31fc356856de
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>06/12/2020 10:53:04</publishTime>
@@ -352,7 +409,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/12/2020 10:53:04</publishTime>
     </File>
     <File Include="Web.config">
+<<<<<<< HEAD
+      <publishTime>06/12/2020 00:13:35</publishTime>
+=======
       <publishTime>06/12/2020 11:00:34</publishTime>
+>>>>>>> 0cabe9992f88f6bfda223f431ecc31fc356856de
     </File>
   </ItemGroup>
 </Project>

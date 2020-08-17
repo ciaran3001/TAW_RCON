@@ -171,9 +171,11 @@ C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\RCON_HLL_MVC\RCON_HLL_MVC\bin\
 C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\RCON_HLL_MVC\RCON_HLL_MVC\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\RCON_HLL_MVC\RCON_HLL_MVC\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\RCON_HLL_MVC\RCON_HLL_MVC\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\RCON_HLL_MVC\RCON_HLL_MVC\obj\Debug\RCON_HLL_MVC.csprojResolveAssemblyReference.cache
 C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\RCON_HLL_MVC\RCON_HLL_MVC\obj\Debug\RCON_HLL_MVC.dll
 C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\RCON_HLL_MVC\RCON_HLL_MVC\obj\Debug\RCON_HLL_MVC.pdb
+<<<<<<< HEAD
+C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\RCON_HLL_MVC\RCON_HLL_MVC\obj\Debug\RCON_HLL_MVC.csprojResolveAssemblyReference.cache
+=======
 C:\Users\Administrator\Source\Repos\TAW_RCON\RCON_HLL_MVC\RCON_HLL_MVC\bin\ApplicationInsights.config
 C:\Users\Administrator\Source\Repos\TAW_RCON\RCON_HLL_MVC\RCON_HLL_MVC\bin\roslyn\csc.exe
 C:\Users\Administrator\Source\Repos\TAW_RCON\RCON_HLL_MVC\RCON_HLL_MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -262,3 +264,4 @@ C:\Users\Administrator\Source\Repos\TAW_RCON\RCON_HLL_MVC\RCON_HLL_MVC\bin\Micro
 C:\Users\Administrator\Source\Repos\TAW_RCON\RCON_HLL_MVC\RCON_HLL_MVC\obj\Debug\RCON_HLL_MVC.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Source\Repos\TAW_RCON\RCON_HLL_MVC\RCON_HLL_MVC\obj\Debug\RCON_HLL_MVC.dll
 C:\Users\Administrator\Source\Repos\TAW_RCON\RCON_HLL_MVC\RCON_HLL_MVC\obj\Debug\RCON_HLL_MVC.pdb
+>>>>>>> 0cabe9992f88f6bfda223f431ecc31fc356856de

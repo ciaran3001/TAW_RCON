@@ -42,7 +42,7 @@ namespace TestingRCONCMD
             try
             {
                 //TODO: Move connection details to encrypted file. 
-                ServerConnectionDetails servrDetails = new ServerConnectionDetails("176.57.168.232", 28316, "TAWadminJune06");  //IP,Port,PW
+                ServerConnectionDetails servrDetails = new ServerConnectionDetails("176.57.168.232", 28315, "TAWadminJune06");  //IP,Port,PW
 
                 Console.WriteLine("Attempting to open connection to: 176.57.168.232");
                 ServerSession _session = new ServerSession(servrDetails);
