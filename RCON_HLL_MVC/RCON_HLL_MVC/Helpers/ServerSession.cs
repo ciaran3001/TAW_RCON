@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace RCON_HLL_MVC.Helpers
 {
+    /*
     public class ServerSession : INotifyPropertyChanged
     {
         private static int s_messageBufferSize = 8196;
@@ -380,4 +381,6 @@ namespace RCON_HLL_MVC.Helpers
 
         }
     }
+
+    */
 }

@@ -13,8 +13,8 @@ namespace csharpi.Services
         string connectionString = @"Data Source = VPS-ZAP65083-7\SQLEXPRESS; Initial Catalog = HLL_Logs; User ID = DataService; Password = Password2020";
         public async Task<string> GetTopTeamKillers()
         {
-            var query = "SELECT TOP(5) Killer,COUNT(Killer) AS 'value_occurrence'FROM[HLL_Logs].[dbo].[HLLKills]where convert(varchar(10), DateTime, 102) = convert(varchar(10), getdate(), 102) AND TEAMKILL = 1GROUP BY[Killer]ORDER BY 'value_occurrence' DESC";
-
+            //var query = "SELECT TOP(5) Killer,COUNT(Killer) AS 'value_occurrence'FROM[HLL_Logs].[dbo].[HLLKills]where convert(varchar(10), DateTime, 102) = convert(varchar(10), getdate(), 102) AND TEAMKILL = 1GROUP BY[Killer]ORDER BY 'value_occurrence' DESC";
+            var query = "SELECT TOP (5) Killer,COUNT(*) AS 'value_occurrence' FROM [HLL_Logs].[dbo].[HLLKills] WHERE TeamKill = 1 AND convert(varchar(10), DateTime, 102) = convert(varchar(10), getdate(), 102) AND TEAMKILL = 1 GROUP BY Killer ORDER BY value_occurrence DESC";
             DataTable results = await GetDataSetAsync(connectionString, query);
             //get top 5 
             List<Kill> TKers = new List<Kill>();
@@ -31,7 +31,7 @@ namespace csharpi.Services
             {
                 foreach(var tk in TKers)
                 {
-                    tmpList += tk.killer + " ["+tk.amount+"],";
+                    tmpList += ":man_cartwheeling:  " + tk.killer + " ["+tk.amount+"], \n";
                 }
             }
             else
@@ -110,11 +110,27 @@ namespace csharpi.Services
                 }
             });
         }
+
+        public async Task<string> GetTodaysPunishments()
+        {
+            var query = "SELECT * FROM [HLL_Logs].[dbo].[AutoPunishments] WHERE convert(varchar(10), Date, 102) = convert(varchar(10), getdate(), 102)";
+            DataTable results = await GetDataSetAsync(connectionString, query);
+            string _tmp = " ";
+
+            foreach (DataRow dr in results.Rows)
+            {
+
+                _tmp += (" \n :arrow_forward: " + dr["Player"].ToString() + " punished with a " + dr["Punishment"].ToString() + ". '" + dr["Comment"].ToString() + "'");
+            }
+
+            return _tmp;
+        }
+        
     }
 }
 
 
-
+//
 /*
  * 
  *   --Top TeamKillers

@@ -8,17 +8,17 @@ namespace RCON_HLL_MVC.Helpers
     public static class RconHelper
     {
         static string  ReceivedMessage;
-        static ServerSession session;
+      //  static ServerSession session;
 
         public static bool Setup()
         {
             try
             {
                 //TODO: Move connection details to encrypted file. 
-                ServerConnectionDetails servrDetails = new ServerConnectionDetails("176.57.168.232", 28316, "TAWadminJune06");  //IP,Port,PW
+                ServerConnectionDetails servrDetails = new ServerConnectionDetails("176.57.168.232", 28316, "TAWp0waofGr4ySkull");  //IP,Port,PW
 
                 Console.WriteLine("Attempting to open connection to: 176.57.168.232");
-                ServerSession _session = new ServerSession(servrDetails);
+              /*  ServerSession _session = new ServerSession(servrDetails);
                 if (_session.Connect())
                 {
                     Console.WriteLine("Connected.");
@@ -27,7 +27,7 @@ namespace RCON_HLL_MVC.Helpers
                 else
                 {
                     Console.WriteLine("Unable to connect");
-                }
+                }*/
 
                 //Get Static library to get commands from xml
                 RconStaticLibrary.UpdateAvailableCommandsAndGetters();

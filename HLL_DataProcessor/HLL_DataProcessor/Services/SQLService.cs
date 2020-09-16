@@ -55,8 +55,37 @@ namespace HLL_DataProcessor.Services
                 string Command = row.Data; //.Substring(11, row.Data.Length - 11);
 
                 //Process Data
+                #region chat
+                if (Command.Contains("CHAT"))
+                {
+                    row.Command = "CHAT";
+                    int NameEnd = 0;
+
+                    //player
+                    try
+                    {
+                        for (int i = 0; i < row.Data.Length; i++)
+                        {
+                            if (row.Data[i] == ')' && row.Data[i + 1] == ']' && row.Data[i + 2] == ':')
+                            {
+                                NameEnd = i;
+                                row.Player = row.Data.Substring(22, i - 22);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
+                        continue;
+                    }
+
+                    //Message
+                    row.Message = row.Data.Substring(NameEnd + 2, row.Data.Length - (NameEnd + 2));
+
+                }
+                #endregion chat
                 #region TEAMKILL   
-                if (Command.Contains("TEAM KILL"))
+                else if (Command.Contains("TEAM KILL"))
                 {
                     row.Command = "TEAM KILL";
                     row.TeamKill = true;
@@ -70,7 +99,7 @@ namespace HLL_DataProcessor.Services
                         {
                             arrowPosition = i;
                             row.Killer = row.Data.Substring(21, i - 21);
-                        }
+                        }  
                     }
 
                     //Killed
@@ -121,34 +150,6 @@ namespace HLL_DataProcessor.Services
                     row.Weapon = row.Data.Substring(withPosition + 4, row.Data.Length - (withPosition + 4));
                 }
                 #endregion
-                #region chat
-                else if (Command.Contains("CHAT"))
-                {
-                    row.Command = "CHAT";
-                    int NameEnd = 0;
-
-                    //player
-                    try
-                    {
-                        for (int i = 0; i < row.Data.Length; i++)
-                        {
-                            if (row.Data[i] == ')' && row.Data[i + 1] == ']' && row.Data[i + 2] == ':')
-                            {
-                                NameEnd = i;
-                                row.Player = row.Data.Substring(22, i - 22);
-                            }
-                        }
-                    }catch(Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                        continue;
-                    }
-
-                    //Message
-                    row.Message = row.Data.Substring(NameEnd + 2, row.Data.Length - (NameEnd + 2));
-
-                }
-                #endregion chat
                 #region Disconnected
                 else if (Command.Contains("DISCON"))
                 {
@@ -179,12 +180,18 @@ namespace HLL_DataProcessor.Services
         }
         public void InsertIntoSQL(string query)
         {
-            string connectionString = @"Data Source = VPS-ZAP65083-7\SQLEXPRESS; Initial Catalog = HLL_Logs; User ID = DataService; Password = Password2020";
-            SqlConnection myConnection = new SqlConnection(connectionString);
-            myConnection.Open();
-            SqlCommand myCommand = new SqlCommand(query, myConnection);
-            myCommand.ExecuteNonQuery();
-            myConnection.Close();
+            try
+            {
+                string connectionString = @"Data Source = VPS-ZAP65083-7\SQLEXPRESS; Initial Catalog = HLL_Logs; User ID = DataService; Password = Password2020";
+                SqlConnection myConnection = new SqlConnection(connectionString);
+                myConnection.Open();
+                SqlCommand myCommand = new SqlCommand(query, myConnection);
+                myCommand.ExecuteNonQuery();
+                myConnection.Close();
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
 
         public void UpdateAsProcessed(int id)

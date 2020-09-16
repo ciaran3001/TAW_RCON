@@ -11,11 +11,16 @@ namespace RCON_HLL_MVC
     [AllowCrossSite]
     public class RCONController : Controller
     {
+
         // GET: RCON
         public ActionResult Index()
         {
+            string result = " "; 
             RconCommandsModel commands = new RconCommandsModel();
+            HLLService.Connect("176.57.168.232", 28316, "TAWp0waofGr4ySkull",out result);
             return View(commands);
+
+
         }
 
         // GET: RCON/Analytics
@@ -61,21 +66,30 @@ namespace RCON_HLL_MVC
 
             if (helper.ConvertJSONToCommand(CommandJSON, out rconCommand, out populatedParams))
             {
-                rconCommand.StartExecuting(populatedParams, RCONSetup.RCONSession, out response);
+                rconCommand.StartExecuting(populatedParams, out response);
             }
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult CreateNewSession(string ip, int port, string password)
+        public ActionResult CreateNewSession()
         {
-            try
-            {
-                //ServerSession.m_communicationMutex.ReleaseMutex();
-
-                ServerConnectionDetails details = new ServerConnectionDetails(ip, port, password);
+                string ip = "176.57.168.232";
+                int port = 28316;
+                string password = "TAWp0waofGr4ySkull";
+            //ServerSession.m_communicationMutex.ReleaseMutex();
+            string result = "";
+                if (HLLService.Connect("176.57.168.232", 28316, "TAWp0waofGr4ySkull",out result))
+                {
+                    return Json("Connected: " + result, JsonRequestBehavior.AllowGet);
+                }
+                else {
+                    return Json("Unable to connect: " + result, JsonRequestBehavior.AllowGet);
+                }
+            /* try { 
+              ServerConnectionDetails details = new ServerConnectionDetails(ip, port, password);
                 ServerSession _session = new ServerSession(details);
-                if (_session.Connect())
+                if (RCONSetup.HLLConnection.Connect(ip,port,password))
                 {
                     RCONSetup.RCONSession = _session;
                     ServerSession.m_communicationMutex.WaitOne();
@@ -90,10 +104,11 @@ namespace RCON_HLL_MVC
             catch(Exception e)
             {
                 return Json(e.Message, JsonRequestBehavior.AllowGet);
-            }
+            }*/
 
         }
         [HttpPost]
+        [EnableCors("AllowSpecificOrigin")]
         public ActionResult SendGetter(string Getter)
         {
             InputHelper helper = new InputHelper();
@@ -102,53 +117,16 @@ namespace RCON_HLL_MVC
             string[] response = new string[1]; 
 
             if(helper.FindGetter(Getter,out rconGetter)){
-                if (rconGetter.GetData(RCONSetup.RCONSession, out response))
+                if (rconGetter.GetData( out response))
                 {
                     return Json(response, JsonRequestBehavior.AllowGet);
                 }
             }
 
-            return Json("Session connected: 2" + RCONSetup.RCONSession.Status+ 
-                " Authenticated " + RCONSetup.RCONSession.StatsAuthenticated+
-                " ServerInfo: " + RCONSetup.RCONSession.ServerInfo +
-                " Status Message " + RCONSetup.RCONSession.StatusMessage +
-                " Disconnected " + RCONSetup.RCONSession.Disconnected +
-                " Status Authenticated " + RCONSetup.RCONSession.StatsAuthenticated +
-                "Failure " + response, JsonRequestBehavior.AllowGet);
+            return Json( " Authenticated " + HLLService.Authenticated , JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
-        public ActionResult CreateNewSession(string ip, int port, string password)
-        {
-            try
-            {
-                //ServerSession.m_communicationMutex.ReleaseMutex();
 
-                ServerConnectionDetails details = new ServerConnectionDetails(ip, port, password);
-                ServerSession _session = new ServerSession(details);
-                if (_session.Connect())
-                {
-                    RCONSetup.RCONSession = _session;
-                    ServerSession.m_communicationMutex.WaitOne();
-                    _session.SendMessage(string.Format(ServerSession.s_rconLoginCommand, (object)RconCommand.QuoteString(details.ServerPassword)), true);
-                    string receivedMessage;
-                    var m_lastCommandSucceeded = _session.ReceiveMessage(out receivedMessage, true, true) && RconStaticLibrary.IsSuccessReply(receivedMessage);
-
-                    return Json("Create new session: " + RCONSetup.RCONSession.Status +
-                    " Authenticated " + RCONSetup.RCONSession.StatsAuthenticated +
-                    " ServerInfo: " + RCONSetup.RCONSession.ServerInfo +
-                    " Status Message " + RCONSetup.RCONSession.StatusMessage +
-                    " Disconnected " + RCONSetup.RCONSession.Disconnected +
-                    " Status Authenticated " + RCONSetup.RCONSession.StatsAuthenticated  , JsonRequestBehavior.AllowGet);
-                }
-                return Json("Unable to connect", JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                return Json(e.Message, JsonRequestBehavior.AllowGet);
-            }
-
-        }
         #region Unused ActionResults
         /*  // GET: RCON/Details/5
           public ActionResult Details(int id)

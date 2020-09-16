@@ -41,3 +41,6 @@ C:\Users\Administrator\Desktop\HLL_DataCollection_Service\HLL_DataCollection_Ser
 C:\Users\Administrator\Desktop\HLL_DataCollection_Service\HLL_DataCollection_Service\bin\Debug\HLL_DataCollection_Service.application
 C:\Users\Administrator\Desktop\HLL_DataCollection_Service\HLL_DataCollection_Service\obj\Debug\HLL_DataCollection_Service.exe.manifest
 C:\Users\Administrator\Desktop\HLL_DataCollection_Service\HLL_DataCollection_Service\obj\Debug\HLL_DataCollection_Service.application
+C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\master\HLL_DataCollection_Service\HLL_DataCollection_Service\bin\Debug\HLL_DataCollection_Service.exe.config
+C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\master\HLL_DataCollection_Service\HLL_DataCollection_Service\obj\Debug\HLL_DataCollection_Service.exe
+C:\Users\Ciaran\Desktop\Desktop\Projects\RCONRepo\master\HLL_DataCollection_Service\HLL_DataCollection_Service\obj\Debug\HLL_DataCollection_Service.pdb

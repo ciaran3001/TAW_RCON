@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using csharpi.Services;
+using System.Threading;
 
 namespace csharpi.Modules
 {
     // for commands to be available, and have the Context passed to them, we must inherit ModuleBase
-    public class ExampleCommands : ModuleBase
+    public class Commands : ModuleBase
     {
         [Command("hello")]
         public async Task HelloCommand()
@@ -119,7 +120,7 @@ namespace csharpi.Modules
             // initialize empty string builder for reply
             var sb = new StringBuilder();
             var teamkillCount = await sql.GetTotalTKs(); ;
-            var totalKillCount = 0;
+            var totalKillCount = 0;  //TODO implement SQL getter. 
             var topKiller = await sql.GetTopKiller();
             var topKilled = await sql.GetTopKilled();
             string TeamKillers = await sql.GetTopTeamKillers();
@@ -129,17 +130,66 @@ namespace csharpi.Modules
 
             // build out the reply
             sb.AppendLine($"Hi, {user.Username}!");
-            sb.AppendLine("Server stats coming right up!");
-            sb.AppendLine("******************************");
-            sb.AppendLine("There were " + teamkillCount + " teamkills today");
-            sb.AppendLine("Today's Most Kills: " + topKiller);
-            sb.AppendLine("Today's Most Killed: " + topKilled);
+            sb.AppendLine("Server stats coming right up! :slight_smile:");
             sb.AppendLine(" ");
-            sb.AppendLine("Todays TeamKillers are:" + TeamKillers);
+            sb.AppendLine(":arrow_forward: There were " + teamkillCount + " teamkills today.");
+            sb.AppendLine(":arrow_forward: Today's Most Kills: " + topKiller);
+            sb.AppendLine(":arrow_forward: Today's Most Killed: " + topKilled);
+            sb.AppendLine(" ");
+            sb.AppendLine(":arrow_forward: Todays TeamKillers are: \n \n " + TeamKillers);
 
             // send simple string reply
             await ReplyAsync(sb.ToString());
         }
+
+
+        [Command("TodaysPunishments")]
+        public async Task TodaysPunishments()
+        {
+            // initialize empty string builder for reply
+            var sb = new StringBuilder();
+            SQLHandler sql = new SQLHandler();
+            var user = Context.User;
+
+            // get user info from the Context
+            var punishments = await sql.GetTodaysPunishments();
+
+            // build out the reply
+            sb.AppendLine($"Hi, [{user.Username}]");
+            sb.AppendLine(":tired_face:  Auto punishments we had to give out today are: :tired_face: " + punishments);
+
+
+            // send simple string reply
+            await ReplyAsync(sb.ToString());
+        }
+
+        [Command("ScanForClones")]
+        public async Task ScanForClones()
+        {
+            // TAW community running joke - easter egg command! ;) 
+            var sb = new StringBuilder();
+            SQLHandler sql = new SQLHandler();
+            var user = Context.User;
+
+            // get user info from the Context
+            var punishments = await sql.GetTodaysPunishments();
+
+            // build out the reply
+            sb.AppendLine($"Hi, [{user.Username}]");
+            sb.AppendLine("Scanning for clones... ");
+            await ReplyAsync(sb.ToString());
+
+            Thread.Sleep(2000);
+            sb = new StringBuilder();
+            sb.AppendLine(":worried:  Clone found:  Kegso   :worried: ");
+            sb.AppendLine("Please return origonal Kegso to discord.");
+            sb.AppendLine(" ");
+            sb.AppendLine("SCAN TERMINATED");
+            // send simple string reply
+            await ReplyAsync(sb.ToString());
+            
+        }
+
     }
 }
 

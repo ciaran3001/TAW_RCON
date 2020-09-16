@@ -1,4 +1,5 @@
-﻿using RCON_HLL_MVC.Helpers;
+﻿using RCON_HLL_MVC.App_Start;
+using RCON_HLL_MVC.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,11 +39,11 @@ namespace RCON_HLL_MVC.Models
             m_messageTemplate = (string)commandNode.Attribute((XName)"messagetemplate");
         }
 
-        public bool GetData(ServerSession serverSession, out string[] data)
+        public bool GetData( out string[] data)
         {
             data = new string[0];
             string receivedMessage = "";
-            if (!serverSession.SendMessage(m_messageTemplate, true) || !serverSession.ReceiveMessage(out receivedMessage, true, false))
+            if (!HLLService.SendMessage(m_messageTemplate, true) || !HLLService.ReceiveMessage(out receivedMessage, true, false))
             {
                 return false;
             }

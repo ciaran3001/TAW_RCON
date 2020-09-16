@@ -12,7 +12,7 @@ using RCON_HLL_MVC.Models;
 
 namespace RCON_HLL_MVC.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
